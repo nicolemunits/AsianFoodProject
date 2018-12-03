@@ -1,0 +1,57 @@
+﻿@model AsianFoodProject.Models.Food
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.FoodName</h2>
+<hr />
+
+<div>
+    @if (Model.IsVegetarian == true)
+    {
+        <h4>Vegetarian | @Model.FoodPrice ₪</h4>
+    }
+
+    @if (Model.IsVegetarian == false)
+    {
+        <h4>Price | @Model.FoodPrice ₪</h4>
+    }
+</div>
+
+<br />
+<img src=@Model.ImageUrl width="35%" height="35%" style="border:2px solid black">
+<br /><br />
+
+<div>
+     <a href="@Href("~/Orders/ShippingInfo/" + Model.FoodID)">Click here to buy</a>
+    @*<input type="button" value="Click here to buy" onclick="location.href="@Url.Action("ShippingInfo", "Orders" , new { id=@Model.FoodID})" class="btn btn-primary" />*@
+    <br /> <br />
+
+
+    @if (Model.CategoryId == 1)
+    {
+        <p>
+            @Html.ActionLink("Back to Wok", "Wok") |
+            @Html.ActionLink("Back to All Foods", "Index")
+        </p>
+    }
+
+
+    else if (Model.CategoryId == 2)
+    {
+        <p>
+            @Html.ActionLink("Back to Shushi", "Shushi") |
+            @Html.ActionLink("Back to All Foods", "Index")
+        </p>
+    }
+
+
+    else if (Model.CategoryId == 3)
+    {
+        <p>
+            @Html.ActionLink("Back to Rice", "Rice") |
+            @Html.ActionLink("Back to All Foods", "Index")
+        </p>
+    }
+</div>

@@ -1,0 +1,21 @@
+﻿<div id="w-btn" class="btn btn-block">Click to see the<br /> weather in the city of AsianFood</div>
+<b><span id="name"></span> <br /></b>
+<span id="temp"></span> <br />
+<span id="humidity"></span> <br />
+<span id="desc"></span>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#w-btn").click(function () {
+            $.get("http://api.openweathermap.org/data/2.5/weather?q=TelAviv&APPID=72e82b00b72064bbd65ce2b52222c59e", function (response) {
+                $("#name").text(response.name);
+                $("#temp").text("The Tempature is: " + Math.round((response.main.temp - 32) * (5 / 9)) + "℃");
+                $("#humidity").text("Humidity: " + response.main.humidity);
+                $("#desc").text("Description: " + response.weather[0].description);
+                $("#w-btn").hide();
+                //console.log(response);
+            });
+        });
+    });
+</script>

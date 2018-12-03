@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Shopping Details";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Full Name
+        </th>
+
+        <th>
+            Address
+        </th>
+
+        <th>
+            Phone Number
+        </th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Model.FirstName @Model.LastName
+        </td>
+
+        <td>
+            @Model.Address
+        </td>
+
+        <td>
+            @Model.PhoneNumber
+        </td>
+    </tr>
+</table>
+
+<input type="button" value="confrim" class="btn btn-primary" onclick="location.href='@Url.Action(" Recipt", "Orders" , new { id=@ViewBag.FoodId })'" />
+| @Html.ActionLink("cancel order", "Index", "Home")

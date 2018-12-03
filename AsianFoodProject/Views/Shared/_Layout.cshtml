@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - AsianFood</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+        <p>The time is @DateTime.Now</p>
+    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                @Html.ActionLink("AsianFood", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Our Menu
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">
+
+                            <li>@Html.ActionLink("All", "Index", "Foods")</li></a>
+                    </li>
+                    <li>@Html.ActionLink("Wok", "Wok", "Foods")</li></a></li>
+                    <li>@Html.ActionLink("Sushi", "Sushi", "Foods")</li></a></li>
+                    <li>@Html.ActionLink("Rice", "Rice", "Foods")</li></a></li>
+                </ul>
+                </li>
+
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Statistics
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#">
+                        <li>@Html.ActionLink("Categories Graph", "GraphOfCategories", "Home")</li></a>
+                        <li>@Html.ActionLink("Foods Graph", "GraphOfFoods", "Home")</li></a>
+                        <li>@Html.ActionLink("Customers Map", "CustomersMap", "Home")</li></a>
+                    </ul>
+                </li>
+
+                @if (User.Identity.Name.Equals("admin@gmail.com"))
+                {
+                    @*<li>@Html.ActionLink("Customers", "Index", "Customers")</li>*@
+                    <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
+                }
+
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - AsianFood</p>
+        </footer>
+        <div class="container">
+            @Html.Partial("WeatherAPI")
+        </div>
+        <audio controls onclick="onplay">
+            <source src="~/Audio/Titanic.mp3" type="audio/mpeg" />
+            <embed height="80" width="160" src="Audio/Titanic.mp3">
+        </audio>
+        <aside>
+
+            <section>
+                <header>
+                    <h3>Waiters of the month</h3>
+                </header>
+                <ul>
+                    <li><href="#">Yukumatu Nakituri</li>
+                    <li><href="#">Makiru Yakuru</li>
+                    <li><href="#">Sanuk Kituri</li>
+                    <li><href="#">Niteki Yakuzu</li>
+                </ul>
+            </section>
+        </aside>
+        <section>
+            <header>
+                <h3>Canvas</h3>
+            </header>
+
+            <canvas id="myCanvas" width="170" height="100" style="border:1px solid #d3d3d3;">
+                Your browser does not support the HTML5 canvas tag.
+            </canvas>
+
+            <script>
+                        var c = document.getElementById("myCanvas");
+                        var ctx = c.getContext("2d");
+                        ctx.font = "25px Arial";
+                        ctx.strokeText("Welcome", 10, 25);
+            </script>
+
+        </section>
+       
+
+
+    @Scripts.Render("~/Content/js/googlemaps.js")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+@*<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+</div>*@
+
+
+
+
+   
+
+
+

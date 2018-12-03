@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AsianFoodProject.Models.Food>
+
+@{
+    ViewBag.Title = "Foods";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<div class="container">
+    <div class="col-md-4 col-sm-6">
+        <div class="service-wrapper">
+            @using (Html.BeginForm())
+            {
+                <p>
+                    <h4>Search food by </h4><br />
+                    Food name:<br /> @Html.TextBox("FoodName") <br /> <br />
+                    Price:<br /> @Html.DropDownList("FoodPrice", "All") <br /> <br />
+                    @*Vegetarian/NotVegetarian:<br /> @Html.DropDownList("VegetarianOrNotVegetarian", "All") <br /><br />*@
+                    <input type="submit" value="search" />
+                </p>
+            }
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    @foreach (var food in Model)
+    {
+        <div class="col-sm-3 col-lg-3 col-md-3" style="margin-bottom:50px;">
+            <div class="thumbnail">
+                <img src=@food.ImageUrl>
+                <div class="caption">
+                    <h4 class="pull-right">@food.FoodPrice ₪</h4>
+                    <h4>
+                        <a href="@Url.Action("Details", new { id=food.FoodID })">@food.FoodName</a>
+                    </h4>
+                </div>
+
+                @if (User.Identity.Name.Equals("admin@gmail.com"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = food.FoodID })
+                }
+                &nbsp;&nbsp;
+
+                @if (User.Identity.Name.Equals("admin@gmail.com"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = food.FoodID })
+                }
+
+            </div>
+        </div>
+    }
+</div>
+

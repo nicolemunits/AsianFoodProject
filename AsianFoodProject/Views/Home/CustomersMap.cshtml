@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Statistics";
+}
+
+<div align="center">
+    <br />
+    <h4><b>Customers map</b></h4>
+    <hr />
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+    <div id="mapcustomers" style="width:70%; height: 300px;"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoAjbWMGtd8VinKxGl8291xEd0pWWX_Ns&?sensor=false"></script>
+    <script type="text/javascript">
+        function initialize() {
+
+            var mapOptions = {
+                center: new google.maps.LatLng(31.3913989, 35.3259869),
+                zoom: 7,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            //Initial-map
+            var map = new google.maps.Map(document.getElementById("mapcustomers"), mapOptions);
+        } google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</div>

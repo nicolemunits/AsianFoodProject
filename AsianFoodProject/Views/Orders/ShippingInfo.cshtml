@@ -1,0 +1,45 @@
+﻿@model AsianFoodProject.Models.ApplicationUser
+@{
+    ViewBag.Title = "Shopping Details";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Email
+        </th>
+        <td>
+            @Model.Email
+        </td>
+        @*<th>
+            Address
+        </th>
+
+        <th>
+            Phone Number
+        </th>*@
+    </tr>
+
+
+    <tr>
+        <td>
+            
+        </td>
+
+        <td>
+            
+        </td>
+
+        <td>
+            
+        </td>
+    </tr>
+</table>
+
+<a href="@Href("~/Orders/Recipt/" + ViewBag.FoodId)">Confirm</a>
+@*<input type="button" value="confrim" class="btn btn-primary" onclick="location.href='@Url.Action("Recipt", "Orders" , new { id=@ViewBag.FoodId })'" />*@
+| @Html.ActionLink("cancel order", "Index", "Home")

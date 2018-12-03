@@ -1,0 +1,68 @@
+﻿@model AsianFoodProject.Models.Food
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Food</h4>
+    <hr />
+
+    <div style="float: right;">
+        <img src=@Model.ImageUrl width=300 height=400>
+    </div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVegetarian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVegetarian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodPrice) ₪
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.FoodDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodDescription)
+        </dd>*@
+    </dl>
+
+    <input type="button" value="Click here to buy" onclick="location.href='@Url.Action("ShippingInfo", "Orders" , new { id=@Model.FoodID})'" />
+    <br />
+    <br />
+    <br />
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FoodID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

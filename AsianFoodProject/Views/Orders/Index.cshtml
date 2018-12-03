@@ -1,0 +1,80 @@
+﻿@if (!User.Identity.Name.Equals("admin@gmail.com"))
+{
+    {
+        ViewBag.Title = "Error";
+    }
+    <h2>Not Authorized</h2>
+}
+else
+{
+    @model IEnumerable<AsianFoodProject.Models.Order>
+
+    {
+        ViewBag.Title = "Index";
+    }
+
+    <h2>@ViewBag.Title</h2>
+    <hr />
+
+    <p>
+        @Html.ActionLink("Create New Order", "Create")
+    </p>
+
+    <div class="container">
+        <div class="col-md-4 col-sm-6">
+            <div class="service-wrapper">
+                @using (Html.BeginForm())
+                {
+                    <p>
+                        <h4>Search order by </h4><br />
+                        Food name:<br /> @Html.TextBox("FoodName") <br /> <br />
+                        User E-mail:<br /> @Html.TextBox("UserName") <br /> <br />
+                        Order date:<br /> @Html.TextBox("OrderDate") <br /><br />
+                        <input type="submit" value="search" />
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerID)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+            </td>
+        </tr>
+    }
+    </table>
+}
